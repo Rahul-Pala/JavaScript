@@ -61,10 +61,47 @@ function fruitsUpperCase(stringg) {
     return upperCase
 }
 
-console.log(fruitsUpperCase(fruits))
+console.log(fruitsUpperCase(fruits));
 
 // function fruitsUpperCase(arr) {
    // return arr.map(str => str.toUpperCase());
 // }
 
 //const fruitsUpperCase = arr => arr.map(str => str.toUpperCase());
+
+function truncate(str, max) {
+return str.length > max ? str.slice(0, max) + "..." : str;
+}
+
+console.log(truncate('Hello Rahul, how are you today?', 80))
+
+const animals = ['Tiger', 'Giraffe']
+animals.push('Lion', 'Rat')
+animals.unshift('Dog', 'Cat')
+animals.sort()
+
+//function replaceMiddleAnimal(newValue) {
+    //const middleIndex = Math.floor(animals / 2);
+   // animals[middleIndex] = newValue
+ //   return animals
+//} 
+console.log(animals)
+
+
+function replaceMiddleAnimal(newValue) {
+    let halfway = Math.floor(animals.length / 2);
+    animals[halfway] = newValue;
+    return animals;
+}
+
+console.log(replaceMiddleAnimal('Shark'));
+
+function findMatchingAnimals(beginsWith) {
+    return animals.filter(animal => animal.toLocaleLowerCase().startsWith(beginsWith.toLocaleLowerCase()))
+}
+console.log(animals)
+console.log(findMatchingAnimals('r'))
+
+function camelCase(cssProp) {
+    
+}
