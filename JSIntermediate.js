@@ -103,5 +103,71 @@ console.log(animals)
 console.log(findMatchingAnimals('r'))
 
 function camelCase(cssProp) {
-    
+    let words = cssProp.split('-');
+    let result = '';
+
+    for (let i = 0; i < words.length; i++) {
+        if (i === 0) {
+            result = result + words[i]
+        }
+        else {
+            result = result + words[i].charAt(0).toUpperCase() + words[i].slice(1)
+        }
+       
+    }
+    return result
 }
+ 
+console.log(camelCase('hello-rahul'))
+
+let twentyCents = 0.20
+let tenCents = 0.10
+console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
+// 0.2 + 0.1 = 0.30000000000000004
+
+let fixedTwenty = twentyCents.toFixed(2);
+let fixedTen = tenCents.toFixed(2);
+console.log(fixedTwenty + fixedTen) //why is this not working?
+
+function currencyAddition(float1, float2) {
+      let wholeNumber1 = float1 * 100;
+      let wholeNumber2 = float2 * 100;
+
+      return (wholeNumber1 + wholeNumber2) / 100
+}
+
+console.log(currencyAddition(0.20,0.10))
+
+function currencyOperation(float1, float2, operation) {
+    let num1 = Math.round(float1 * 100);
+      let num2= Math.round(float2 * 100);
+
+      let result;
+      
+      if (operation === '+') {
+        result = (num1 + num2) / 100
+      }
+
+      else if (operation === '-') {
+        result = (num1 - num2) / 100
+      }
+
+      else if (operation === '*') {
+        result = (num1 * num2) / 10000
+      } 
+
+      else if (operation === '/') {
+        result = (num1 / num2)
+      }
+      else {
+        return "Invalid operation"
+      }
+
+      return result
+}
+
+console.log(currencyOperation(100, 20, '/'))
+console.log(currencyOperation(100, 20, '*'))
+console.log(currencyOperation(100, 20, '+'))
+console.log(currencyOperation(100, 20, '-'))
+console.log(currencyOperation(100, 20, 'i'))
