@@ -171,3 +171,77 @@ console.log(currencyOperation(100, 20, '*'))
 console.log(currencyOperation(100, 20, '+'))
 console.log(currencyOperation(100, 20, '-'))
 console.log(currencyOperation(100, 20, 'i'))
+
+const colours = ['red', 'green', 'blue', 'yellow', 'orange', 'red', 'blue', 'yellow']
+const testScores = [55, 84, 97, 63, 55, 32, 84, 91, 55, 43]
+
+function unique(duplicatesArray) {
+    return [...new Set(duplicatesArray)];
+}
+
+console.log(unique(colours))
+
+function uniquee(duplicatesArray) {
+    result = [];
+    for (let i = 0; i < duplicatesArray.length; i++) {
+    if (!result.includes(duplicatesArray[i])) {
+        result.push(duplicatesArray[i])
+    }
+    }
+}
+
+console.log(unique(colours))
+
+const books = [
+{ id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
+{ id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
+{ id: 3, title: '1984', author: 'George Orwell', year: 1949 },
+{ id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
+{ id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
+];
+
+function getBookTitle(bookId) {
+    for (let i = 0; i< books.length; i++) {
+        if (books[i].id === bookId) {
+            return books[i].title
+        }
+        return "Book not found"
+    }
+}
+console.log(getBookTitle(1))
+
+function getBookTitlee(bookId) {
+let matchingBook = books.find(book => book.id == bookId);
+return matchingBook ? matchingBook.title : "Book not found"
+}
+console.log(getBookTitlee(5))
+
+function getBookTitleAuthor(BookAuthor) {
+let matchingBook = books.find(book => book.author == BookAuthor);
+return  matchingBook ? matchingBook.title :"no book"
+}
+
+console.log(getBookTitleAuthor('Harper Lee'));
+
+function getOldBooks(bookYear) {
+    let oldBooks = books.filter(book => book.year < 1950)
+        return oldBooks
+}
+
+console.log(getOldBooks())
+
+//function addGenre() {
+  //  let genreAdd = books.map(book.genre ='classic')
+   // return genreAdd
+//}
+
+//addGenre()
+
+function addGenre() {
+books.map(book => book.genre = 'Classic');
+}
+addGenre();
+console.log(books);
+
+
+
