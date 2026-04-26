@@ -194,7 +194,7 @@ console.log(unique(colours))
 
 const books = [
 { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
-{ id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
+{ id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 2000 },
 { id: 3, title: '1984', author: 'George Orwell', year: 1949 },
 { id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
 { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
@@ -243,5 +243,142 @@ books.map(book => book.genre = 'Classic');
 addGenre();
 console.log(books);
 
+function addGenree() {
+    return books.map(function(book) {
+        return {
+            ...book,
+            genre: 'Classic'
+        }
+    })
+}
+addGenree()
 
+function getTitles(authorInitial) {
+return books
+.filter(book =>
+book.author.toLowerCase().startsWith(authorInitial.toLowerCase()))
+.map(book => book.title);
+}
+console.log(getTitles('G'))
 
+function latestBook() {
+    let latestYear = books[0].year;
+
+    books.forEach(function(book) {
+        if (book.year > latestYear) {
+            latestYear = book.year
+        }
+    }) 
+
+    return books.find(function(book) {
+        return book.year === latestYear
+    })
+}
+
+function latestBook() {
+    let latestYear = books[0].year;
+
+    books.forEach(book => {
+        if (book.year > latestYear) {
+            latestYear = book.year;
+        }
+    });
+
+    return books.find(book => book.year === latestYear);
+}
+
+console.log(latestBook())
+
+const phoneBookABC = new Map()
+
+phoneBookABC.set('Ahul', '0210401833')
+phoneBookABC.set('Annabelle', '0412312343')
+phoneBookABC.set('Barry', '0433221117')
+phoneBookABC.set('Caroline', '0455221182')
+
+const phoneBookDEF = new Map()
+
+phoneBookABC.set('Dhul', '0210401833')
+phoneBookABC.set('Ennabelle', '0412312343')
+phoneBookABC.set('Earry', '0433221117')
+phoneBookABC.set('Froline', '0455221182')
+
+console.log(phoneBookABC)
+
+phoneBookABC.set('Caroline', '123456789')
+
+console.log(phoneBookABC)
+
+function printPhoneBook(contacts) {
+    for (let entry of contacts)
+        console.log(entry)
+}
+printPhoneBook(phoneBookABC)
+
+function printPhoneBookk(contacts) {
+    for (let [name, phone] of contacts) {
+        console.log(name + ": " + phone);
+    }
+}
+printPhoneBookk(phoneBookDEF)
+
+let salaries = {
+"Timothy" : 35000,
+"David" : 25000,
+"Mary" : 55000,
+"Christina" : 75000,
+"James" : 43000
+};
+
+function sumSalaries(salaries) {
+    total = 0;
+
+    for (let name in salaries) {
+        total += salaries[name]
+        }
+    return total
+}
+
+console.log(sumSalaries(salaries))
+
+function topEarner(salaries) {
+    let highestSalary = 0;
+    let highestEarnerName = '';
+
+    for (let name in salaries) {
+        if (salaries[name] > highestSalary) {
+            highestSalary = salaries[name];
+            highestEarnerName = name;
+        }
+    }
+    return highestEarnerName
+}
+console.log(topEarner(salaries))
+
+const todayy = new Date()
+
+console.log(todayy) 
+
+const today = new Date();
+console.log('Current time is ' + today.toLocaleTimeString())
+console.log(today.getHours() + ' hours have passed so far today')
+console.log((today.getHours()*60 + today.getMinutes()) + ' minutes have passed today')
+console.log((today.getHours()*60*60 + today.getMinutes()*60 + today.getSeconds()) + ' seconds have passed today')
+
+const birthday = new Date('1989-12-25')
+let years = today.getFullYear() - birthday.getFullYear();
+let months = today.getMonth() - birthday.getMonth();
+let days = today.getDate() - birthday.getDate();
+
+console.log(`I am ${years} years, ${months} months and ${days} days old`)
+
+function daysInBetween(date1, date2) {
+let differenceMS = date2 - date1;
+let millisecondsPerDay = 24 * 60 * 60 * 1000;
+let differenceDays = Math.floor(differenceMS / millisecondsPerDay);
+return Math.abs(differenceDays);
+}
+
+console.log(`Days between ${birthday.toLocaleDateString()} and
+${today.toLocaleDateString()}: ${daysInBetween(birthday, today)}`)
+console.log(`Days between 2022-01-15 and 2023-01-01: ${daysInBetween(new Date('2023-01-01'), new Date('2022-01-15'))}`)
