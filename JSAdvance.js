@@ -220,3 +220,76 @@ let p2 = {
     }
 };
 p2.sayHello()
+
+let name ="Rahul Pala HOHO"
+
+console.log(name);
+
+try {
+
+    console.log(UserName);
+
+} 
+
+catch (error) {
+
+    console.log("Something went wrong.");
+
+}
+
+try {
+
+    console.log(UserName);
+
+} catch (error) {
+
+    console.log(error);
+
+}
+
+try {
+
+    console.log(userName);
+
+} catch (error) {
+
+    console.log(error.message);
+
+}
+
+function checkAge(age) {
+
+    if (age < 18) {
+        throw new Error("You must be at least 18.");
+    }
+
+    console.log("Welcome!");
+
+}
+
+try {
+
+    checkAge(90);
+    checkAge(16)
+
+} catch (error) {
+
+    console.log(error.message);
+
+}
+
+function greet(name) {
+    if (name === "") {
+        throw new Error("Name cannot be empty.");
+    }
+
+    return "Hello " + name;
+}
+
+try {
+    (greet("Rahul"))
+} catch (error) {
+    console.log(error.message)
+}
+
+console.log(greet("RahulPala"));
