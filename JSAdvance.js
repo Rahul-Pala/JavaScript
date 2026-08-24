@@ -1,295 +1,320 @@
-console.log("Hello")
+// console.log("Hello")
 
-function makeCounter() {
-let currentCount = 0;
-return function() {
-currentCount++;
-console.log(currentCount)
-return currentCount;
-};
-}
-let counter1 = makeCounter();
-let counter2 = makeCounter()
-counter1(); // 1
-counter1(); // 2
-counter1()
-counter2()
-counter1()
+// function makeCounter() {
+// let currentCount = 0;
+// return function() {
+// currentCount++;
+// console.log(currentCount)
+// return currentCount;
+// };
+// }
+// let counter1 = makeCounter();
+// let counter2 = makeCounter()
+// counter1(); // 1
+// counter1(); // 2
+// counter1()
+// counter2()
+// counter1()
 
-function makeCounterB(startFrom) {
-    let currentCount = startFrom;
+// function makeCounterB(startFrom) {
+//     let currentCount = startFrom;
 
-    return function() {
-        currentCount++;
-        console.log(currentCount)
-        return currentCount;
-    }
-}
-
-let counter3 = makeCounterB(5)
-counter3()
-
-function makeCounterC(startFrom, incrementBy) {
-let currentCount = startFrom;
-return function() {
-currentCount += incrementBy;
-console.log(currentCount)
-return currentCount;
-};
-}
-let counter4 = makeCounterC(10, 5);
-counter4(); // 15
-counter4(); // 20
-
-function logCalls(fn) {
-    let count = 0;
-
-    return function() {
-        count++;
-        console.log("Function called " + count + " times");
-
-        return fn();
-    };
-}
-
-function sayHello() {
-    console.log("Hello!");
-}
-
-let decoratedHello = logCalls(sayHello);
-decoratedHello()
-decoratedHello()
-
-function slowFunction() {
-    for (let i = 0; i < 1e6; i++) {
-        // simulate heavy work
-    }
-    console.log("Done!");
-}
-
-function getNumber() {
-    return 5;
-}
-console.log(getNumber())
-
-function doubleResult(fn) {
-    return function() {
-        let result = fn()
-        return result * 2
-    }
-}
-
-let newFunction = doubleResult(getNumber)
-console.log(newFunction())
-
-//function decorator(fn) {
-   // return function(...args) {
-    //    let result = fn(...args);
-       // return result;
-  //  }
+//     return function() {
+//         currentCount++;
+//         console.log(currentCount)
+//         return currentCount;
+//     }
 // }
 
-//function decorator(fn) {
-   // return function(...args) {
-   //     // do something BEFORE
-    //    let result = fn(...args);
-        // do something AFTER
-   //     return result;
-   // }
+// let counter3 = makeCounterB(5)
+// counter3()
+
+// function makeCounterC(startFrom, incrementBy) {
+// let currentCount = startFrom;
+// return function() {
+// currentCount += incrementBy;
+// console.log(currentCount)
+// return currentCount;
+// };
+// }
+// let counter4 = makeCounterC(10, 5);
+// counter4(); // 15
+// counter4(); // 20
+
+// function logCalls(fn) {
+//     let count = 0;
+
+//     return function() {
+//         count++;
+//         console.log("Function called " + count + " times");
+
+//         return fn();
+//     };
 // }
 
-function delayMsg(msg)
-{
-console.log(`This message will be printed after a delay: ${msg}`)
-}
-//setTimeout(delayMsg, 100, '#1: Delayed by 100ms');
-//setTimeout(delayMsg, 20, '#2: Delayed by 20ms');
-//setTimeout(delayMsg, 0, '#3: Delayed by 0ms');
-//delayMsg('#4: Not delayed at all')
-//setTimeout(delayMsg,1000, '#5: Delayed by 10 seconds')
-const arrowDelayMsg = (msg) => { 
-    console.log(`This message will be printed after a delay: ${msg}`)
-};
-let fifthTimerRef = setTimeout(delayMsg, 1100, '#5: Longest delay')
-clearTimeout(fifthTimerRef)
+// function sayHello() {
+//     console.log("Hello!");
+// }
 
-function printMe() {
-console.log('printing debounced message')
-}
+// let decoratedHello = logCalls(sayHello);
+// decoratedHello()
+// decoratedHello()
 
-function debounce(func) {
-    let timeout;
-console.log('doing')
-return function(...args) {
-    clearTimeout(timeout);
+// function slowFunction() {
+//     for (let i = 0; i < 1e6; i++) {
+//         // simulate heavy work
+//     }
+//     console.log("Done!");
+// }
 
-    timeout = setTimeout(() => {
-    func(...args);
-}, 1000);
-    console.log('doing too')
+// function getNumber() {
+//     return 5;
+// }
+// console.log(getNumber())
 
-}
-}
-//printMe = debounce(printMe); //create this debounce function for a)
-//fire off 3 calls to printMe within 300ms - only the LAST one should print, after
-//1000ms of no calls
-//setTimeout( printMe, 100);
-//setTimeout( printMe, 200);
-//setTimeout( printMe, 1400);
+// function doubleResult(fn) {
+//     return function() {
+//         let result = fn()
+//         return result * 2
+//     }
+// }
 
-function printMee(msg) {
-    console.log("Printed:", msg);
-}
+// let newFunction = doubleResult(getNumber)
+// console.log(newFunction())
 
-let debouncedPrintt = debounce(printMee);
+// //function decorator(fn) {
+//    // return function(...args) {
+//     //    let result = fn(...args);
+//        // return result;
+//   //  }
+// // }
 
-//debouncedPrintt("First");
-//debouncedPrintt("Second");
-//debouncedPrintt("Third");
+// //function decorator(fn) {
+//    // return function(...args) {
+//    //     // do something BEFORE
+//     //    let result = fn(...args);
+//         // do something AFTER
+//    //     return result;
+//    // }
+// // }
 
-//setInterval(() => {
-   // console.log("Hello");
-//}, 1000);
+// function delayMsg(msg)
+// {
+// console.log(`This message will be printed after a delay: ${msg}`)
+// }
+// //setTimeout(delayMsg, 100, '#1: Delayed by 100ms');
+// //setTimeout(delayMsg, 20, '#2: Delayed by 20ms');
+// //setTimeout(delayMsg, 0, '#3: Delayed by 0ms');
+// //delayMsg('#4: Not delayed at all')
+// //setTimeout(delayMsg,1000, '#5: Delayed by 10 seconds')
+// const arrowDelayMsg = (msg) => { 
+//     console.log(`This message will be printed after a delay: ${msg}`)
+// };
+// let fifthTimerRef = setTimeout(delayMsg, 1100, '#5: Longest delay')
+// clearTimeout(fifthTimerRef)
 
-function sayHello() {
-    console.log("Hello Rahul Pala")
-}
+// function printMe() {
+// console.log('printing debounced message')
+// }
 
-//sayHello()
+// function debounce(func) {
+//     let timeout;
+// console.log('doing')
+// return function(...args) {
+//     clearTimeout(timeout);
 
-//setInterval(sayHello, 3000)
+//     timeout = setTimeout(() => {
+//     func(...args);
+// }, 1000);
+//     console.log('doing too')
 
-//setInterval(() => { sayHello() }, 1000)
+// }
+// }
+// //printMe = debounce(printMe); //create this debounce function for a)
+// //fire off 3 calls to printMe within 300ms - only the LAST one should print, after
+// //1000ms of no calls
+// //setTimeout( printMe, 100);
+// //setTimeout( printMe, 200);
+// //setTimeout( printMe, 1400);
 
-function printFibonacciTimeouts() {
-    let first = 1;
-    let second = 1;
+// function printMee(msg) {
+//     console.log("Printed:", msg);
+// }
 
-    console.log(first);
-    console.log(second);
+// let debouncedPrintt = debounce(printMee);
 
-    function printNext() {
-        let next = first + second;
-        console.log(next);
+// //debouncedPrintt("First");
+// //debouncedPrintt("Second");
+// //debouncedPrintt("Third");
 
-        first = second;
-        second = next;
+// //setInterval(() => {
+//    // console.log("Hello");
+// //}, 1000);
 
-        // call itself again after 1 second
-        setTimeout(printNext, 1000);
-    }
+// function sayHello() {
+//     console.log("Hello Rahul Pala")
+// }
 
-    // start the loop
-    setTimeout(printNext, 1000);
-}
+// //sayHello()
 
-//printFibonacciTimeouts();
+// //setInterval(sayHello, 3000)
 
-let car = {
-make: "Porsche",
-model: '911',
-year: 1964,
-description() {
-console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
-}
-};
-car.description(); //works
-setTimeout(car.description, 200);
-setTimeout(function() {
-    car.description();
-}, 200);
-setTimeout(() => {
-    car.description();
-}, 200);
+// //setInterval(() => { sayHello() }, 1000)
 
-let newCar = {...car, year: 2024};
+// function printFibonacciTimeouts() {
+//     let first = 1;
+//     let second = 1;
 
-newCar.description();
+//     console.log(first);
+//     console.log(second);
 
-let p1 = {
-    name: "Rahul",
-    sayHello: function() {
-        console.log("Hello " + this.name);
-    }
-};
+//     function printNext() {
+//         let next = first + second;
+//         console.log(next);
 
-let p2 = {
-    name: "John",
-    sayHello: function() {
-        console.log("Hello " + this.name);
-    }
-};
-p2.sayHello()
+//         first = second;
+//         second = next;
 
-let name ="Rahul Pala HOHO"
+//         // call itself again after 1 second
+//         setTimeout(printNext, 1000);
+//     }
 
-console.log(name);
+//     // start the loop
+//     setTimeout(printNext, 1000);
+// }
 
-try {
+// //printFibonacciTimeouts();
 
-    console.log(UserName);
+// let car = {
+// make: "Porsche",
+// model: '911',
+// year: 1964,
+// description() {
+// console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
+// }
+// };
+// car.description(); //works
+// setTimeout(car.description, 200);
+// setTimeout(function() {
+//     car.description();
+// }, 200);
+// setTimeout(() => {
+//     car.description();
+// }, 200);
 
-} 
+// let newCar = {...car, year: 2024};
 
-catch (error) {
+// newCar.description();
 
-    console.log("Something went wrong.");
+// let p1 = {
+//     name: "Rahul",
+//     sayHello: function() {
+//         console.log("Hello " + this.name);
+//     }
+// };
 
-}
+// let p2 = {
+//     name: "John",
+//     sayHello: function() {
+//         console.log("Hello " + this.name);
+//     }
+// };
+// p2.sayHello()
 
-try {
+// let name ="Rahul Pala HOHO"
 
-    console.log(UserName);
+// console.log(name);
 
-} catch (error) {
+// try {
 
-    console.log(error);
+//     console.log(UserName);
 
-}
+// } 
 
-try {
+// catch (error) {
 
-    console.log(userName);
+//     console.log("Something went wrong.");
 
-} catch (error) {
+// }
 
-    console.log(error.message);
+// try {
 
-}
+//     console.log(UserName);
 
-function checkAge(age) {
+// } catch (error) {
 
-    if (age < 18) {
-        throw new Error("You must be at least 18.");
-    }
+//     console.log(error);
 
-    console.log("Welcome!");
+// }
 
-}
+// try {
 
-try {
+//     console.log(userName);
 
-    checkAge(90);
-    checkAge(16)
+// } catch (error) {
 
-} catch (error) {
+//     console.log(error.message);
 
-    console.log(error.message);
+// }
 
-}
+// function checkAge(age) {
 
-function greet(name) {
-    if (name === "") {
-        throw new Error("Name cannot be empty.");
-    }
+//     if (age < 18) {
+//         throw new Error("You must be at least 18.");
+//     }
 
-    return "Hello " + name;
-}
+//     console.log("Welcome!");
 
-try {
-    (greet("Rahul"))
-} catch (error) {
-    console.log(error.message)
-}
+// }
 
-console.log(greet("RahulPala"));
+// try {
+
+//     checkAge(90);
+//     checkAge(16)
+
+// } catch (error) {
+
+//     console.log(error.message);
+
+// }
+
+// function greet(name) {
+//     if (name === "") {
+//         throw new Error("Name cannot be empty.");
+//     }
+
+//     return "Hello " + name;
+// }
+
+// try {
+//     (greet("Rahul"))
+// } catch (error) {
+//     console.log(error.message)
+// }
+
+// console.log(greet("RahulPala"));
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON Placeholder Posts</title>
+</head>
+
+<body>
+
+  <h1>Check the console</h1>
+
+  <script>
+
+    fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(json) {
+        console.log(json);
+      });
+
+  </script>
+
+</body>
+</html>

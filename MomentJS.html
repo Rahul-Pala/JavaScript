@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Moment.js Lab</title>
+</head>
+
+<body>
+
+  <h1>Moment.js Lab</h1>
+
+  <p id="question1"></p>
+  <p id="question2"></p>
+  <p id="question3"></p>
+  <p id="question4"></p>
+  <p id="question5"></p>
+
+
+  <!-- Moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+
+  <!-- Moment Timezone -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone-with-data.min.js"></script>
+
+
+  <script>
+
+    // -----------------------------
+    // Question 1
+    // Days between birthdate and today
+    // -----------------------------
+
+    var birthdate = moment("1989-12-25");
+    var today = moment();
+
+    var days = today.diff(birthdate, "days");
+
+    document.getElementById("question1").innerHTML =
+      "Days since birth: " + days;
+
+
+    // -----------------------------
+    // Question 2
+    // Years, months and days
+    // -----------------------------
+
+    var birth = moment("1989-12-25");
+    var current = moment();
+
+    var years = current.diff(birth, "years");
+
+    birth.add(years, "years");
+
+    var months = current.diff(birth, "months");
+
+    birth.add(months, "months");
+
+    var remainingDays = current.diff(birth, "days");
+
+    document.getElementById("question2").innerHTML =
+      years + " years, " +
+      months + " months, and " +
+      remainingDays + " days";
+
+
+    // -----------------------------
+    // Question 3
+    // Which date is closest to today?
+    // -----------------------------
+
+    var date1 = moment("2026-08-20");
+    var date2 = moment("2026-12-20");
+
+    var difference1 = Math.abs(today.diff(date1, "days"));
+    var difference2 = Math.abs(today.diff(date2, "days"));
+
+    if (difference1 < difference2) {
+      document.getElementById("question3").innerHTML =
+        "Date 1 is closer to today";
+    } else {
+      document.getElementById("question3").innerHTML =
+        "Date 2 is closer to today";
+    }
+
+
+    // -----------------------------
+    // Question 4
+    // Is date 1 before or after date 2?
+    // -----------------------------
+
+    var firstDate = moment("2026-01-10");
+    var secondDate = moment("2026-05-10");
+
+    if (firstDate.isBefore(secondDate)) {
+      document.getElementById("question4").innerHTML =
+        "The first date is before the second date";
+    } else {
+      document.getElementById("question4").innerHTML =
+        "The first date is after the second date";
+    }
+
+
+    // -----------------------------
+    // Question 5
+    // Current time in London
+    // -----------------------------
+
+    var londonTime = moment()
+      .tz("Europe/London")
+      .format("HH:mm:ss");
+
+    document.getElementById("question5").innerHTML =
+      "Current London time: " + londonTime;
+
+
+  </script>
+
+</body>
+
+</html>
